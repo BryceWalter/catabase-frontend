@@ -45,7 +45,11 @@ const styles = theme => ({
   },
 });
 
-function Login(props) {
+const login = () => {
+
+}
+
+function Login (props) {
   const { classes } = props;
 
   return (
@@ -72,6 +76,7 @@ function Login(props) {
             label="Remember me"
           />
           <Button
+            onClick={this.login()}
             type="submit"
             fullWidth
             variant="contained"
