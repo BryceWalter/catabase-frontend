@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Avatar from '@material-ui/core/Avatar';
+// import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import FormControl from '@material-ui/core/FormControl';
@@ -12,6 +12,8 @@ import LockIcon from '@material-ui/icons/LockOutlined';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
+import lazycat from '../images/lazycat.gif';
+import Footer from "../components/Footer";
 
 const styles = theme => ({
   main: {
@@ -24,37 +26,46 @@ const styles = theme => ({
       marginLeft: 'auto',
       marginRight: 'auto',
     },
+ 
   },
   paper: {
-    marginTop: theme.spacing.unit * 8,
+    marginTop: theme.spacing.unit * 0.2,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme.spacing.unit * 3}px`,
   },
-  avatar: {
-    margin: theme.spacing.unit,
-    backgroundColor: theme.palette.secondary.main,
-  },
+  // avatar: {
+  //   margin: theme.spacing.unit,
+  //   backgroundColor: theme.palette.secondary.main,
+  // },
   form: {
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing.unit,
   },
   submit: {
     marginTop: theme.spacing.unit * 3,
-  },
+  }
 });
 
 function Login(props) {
   const { classes } = props;
 
   return (
+    <React.Fragment>
     <main className={classes.main}>
       <CssBaseline />
+      <img
+            className="logo"
+            src={lazycat}
+            width="350"
+            alt="logo"
+      />
       <Paper className={classes.paper}>
-        <Avatar className={classes.avatar}>
+        {/* <Avatar className={classes.avatar}>
           <LockIcon />
-        </Avatar>
+        </Avatar> */}
+        
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
@@ -82,7 +93,10 @@ function Login(props) {
           </Button>
         </form>
       </Paper>
+     
     </main>
+     <Footer/> 
+     </React.Fragment>
   );
 }
 
