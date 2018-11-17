@@ -1,178 +1,579 @@
-Skip to content
- 
-Search or jump to…
 
-Pull requests
-Issues
-Marketplace
-Explore
- @AbrahamTesla Sign out
-1,339
-42,015 8,215 mui-org/material-ui
- Code  Issues 222  Pull requests 26  Insights
-material-ui/docs/src/pages/getting-started/page-layout-examples/checkout/Checkout.js
-83adb95  5 days ago
-@oliviertassinari oliviertassinari @material-ui/styles (#13503)
-     
-162 lines (150 sloc)  4.56 KB
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import withStyles from '@material-ui/core/styles/withStyles';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Paper from '@material-ui/core/Paper';
-import Stepper from '@material-ui/core/Stepper';
-import Step from '@material-ui/core/Step';
-import StepLabel from '@material-ui/core/StepLabel';
+import classNames from 'classnames';
+import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
+// import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import AddressForm from './AddressForm';
-import PaymentForm from './PaymentForm';
-import Review from './Review';
+import Api from "../utils/Api";
+import { withStyles } from '@material-ui/core/styles';
+import MenuItem from '@material-ui/core/MenuItem';
 
 const styles = theme => ({
-  appBar: {
-    position: 'relative',
-  },
-  layout: {
-    width: 'auto',
-    marginLeft: theme.spacing.unit * 2,
-    marginRight: theme.spacing.unit * 2,
-    [theme.breakpoints.up(600 + theme.spacing.unit * 2 * 2)]: {
-      width: 600,
-      marginLeft: 'auto',
-      marginRight: 'auto',
+    container: {
+      display: 'flex',
+      flexWrap: 'wrap',
     },
-  },
-  paper: {
-    marginTop: theme.spacing.unit * 3,
-    marginBottom: theme.spacing.unit * 3,
-    padding: theme.spacing.unit * 2,
-    [theme.breakpoints.up(600 + theme.spacing.unit * 3 * 2)]: {
-      marginTop: theme.spacing.unit * 6,
-      marginBottom: theme.spacing.unit * 6,
-      padding: theme.spacing.unit * 3,
+    textField: {
+      marginLeft: theme.spacing.unit,
+      marginRight: theme.spacing.unit,
+      width: 200,
     },
-  },
-  stepper: {
-    padding: `${theme.spacing.unit * 3}px 0 ${theme.spacing.unit * 5}px`,
-  },
-  buttons: {
-    display: 'flex',
-    justifyContent: 'flex-end',
-  },
-  button: {
-    marginTop: theme.spacing.unit * 3,
-    marginLeft: theme.spacing.unit,
-  },
-});
+    dense: {
+      marginTop: 19,
+    },
+    menu: {
+      width: 200,
+    },
+  });
 
-const steps = ['Shipping address', 'Payment details', 'Review your order'];
+const age = [
+    {
+      value: "Unweaned",
+      label: "Unweaned",
+    },
+    {
+      value: "Juvenile",
+      label: "Juvenile",
+    },
+    {
+      value: "Young Adult",
+      label: "Young Adult",
+    },
+    {
+      value: "Adult",
+      label: "Adult",
+    },
+    {
+        value: "Senior",
+        label: "Senior",
+    },
+  ];
+const sex = [
+    {
+        value: "Male",
+        label: "Male",
+    },
+    {
+        value: "Female",
+        label: "Female"
+    },
+];
+const size = [
+    {
+        value:"Small",
+        label:"Small",
+    },
+    {
+        value:"Medium",
+        label:"Medium",
+    }
+];
 
-// function getStepContent(step) {
-//   switch (step) {
-//     case 0:
-//       return <AddressForm />;
-//     case 1:
-//       return <PaymentForm />;
-//     case 2:
-//       return <Review />;
-//     default:
-//       throw new Error('Unknown step');
-//   }
-// }
+const primaryBreed = [
+    {
+        value:"DSH",
+        label:"DSH",
+    },
+    {
+        value:"DMH",
+        label:"DMH",
+    },
+    {
+        value:"DLH",
+        label:"DLH",
+    },
+    {
+        value:"other",
+        label:"other",
+    },
+];
+const secondaryBreed = [
+    {
+        value:"DSH",
+        label:"DSH",
+    },
+    {
+        value:"DMH",
+        label:"DMH",
+    },
+    {
+        value:"DLH",
+        label:"DLH",
+    },
+    {
+        value:"other",
+        label:"other",
+    },
+];
 
-class Checkout extends React.Component {
-  state = {
-    activeStep: 0,
-  };
+const FIVTested = [
+    {
+        value:"Positive",
+        label:"Positive",
+    },
+    {
+        value:"Negative",
+        label:"Negative",
+    },
+    {
+        value:"Not Tested",
+        label:"Not Tested",
+    },
+    
+];
 
-  handleNext = () => {
-    this.setState(state => ({
-      activeStep: state.activeStep + 1,
-    }));
-  };
+const FLVTested = [
+    {
+        value:"Positive",
+        label:"Positive",
+    },
+    {
+        value:"Negative",
+        label:"Negative",
+    },
+    {
+        value:"Not Tested",
+        label:"Not Tested",
+    },
+    
+];
 
-  handleBack = () => {
-    this.setState(state => ({
-      activeStep: state.activeStep - 1,
-    }));
-  };
-
-  handleReset = () => {
+class CatForm extends Component {
+       state = {
+           name:"",
+           age:"",
+           sex:"",
+           status:"",  
+           primaryBreed:"DSH",
+           secondaryBreed:"DSH",
+           size:"Small",
+           description:"",
+           serialNumber:"",
+           shelterTableID:"",
+           petPointID:"",
+           image:"",
+           FIVTested:"",
+           FLVTested:"",
+           FVRCPVaccination:"",
+           rabiesVaccinationDate:"",
+           vetTableID:"",
+           medicalNote:"",
+           behaviourNote:"",
+           outCome:"",
+           intakeDate:"",
+           fosterPlacementDate:""
+       }
+componentDidMount(){
+    this.loadCats();
+}
+loadCats = () => {
+    Api.getCats()
+     .then(res =>
+        this.setState({
+            name:"",
+            age:"",
+            sex:"",
+            description:"",
+            serialNumber:"",
+            shelterTableID:"",
+            petPointID:"",
+            image:"",
+            FIVTested:"",
+            FLVTested:"",
+            FVRCPVaccination:"",
+            rabiesVaccinationDate:"",
+            vetTableID:"",
+            medicalNote:"",
+            behaviourNote:"",
+            outCome:"",
+            intakeDate:"",
+            fosterPlacementDate:""
+        })  
+    )
+};
+// handleInputChange = event => {
+//         const { name, value } = event.target;
+      
+//         this.setState({
+//           [name]: value
+//         });
+//       };
+handleInputChange = name => event => {
     this.setState({
-      activeStep: 0,
+      [name]: event.target.value,
     });
   };
+handleFormSubmit = event => {
+    event.preventDefault();
+    Api.saveCat({
+        name:this.state.name,
+        age:this.state.age,
+        sex:this.state.sex,
+        description:this.state.description,
+        serialNumber:this.state.serialNumber,
+        shelterTableID:this.state.shelterTableID,
+        petPointID:this.state.petPointID,
+        image:this.state.image,
+        FIVTested:this.state.FIVTested,
+        FLVTested:this.state.FFLVTested,
+        FVRCPVaccination:this.state.FVRCPVaccination,
+        rabiesVaccinationDate:this.state.abiesVaccinationDate,
+        vetTableID:this.state.vetTableID,
+        medicalNote:this.state.medicalNote,
+        behaviourNote:this.state.behaviourNote,
+        outCome:this.state.outCome,
+        intakeDate:this.state.intakeDate,
+        fosterPlacementDate:this.state.fosterPlacementDate
 
-  render() {
-    const { classes } = this.props;
-    const { activeStep } = this.state;
+    })
 
-    return (
-      <React.Fragment>
-        <CssBaseline />
-        <AppBar position="absolute" color="default" className={classes.appBar}>
-          <Toolbar>
-            <Typography variant="h6" color="inherit" noWrap>
-              Company name
-            </Typography>
-          </Toolbar>
-        </AppBar>
-        <main className={classes.layout}>
-          <Paper className={classes.paper}>
-            <Typography component="h1" variant="h4" align="center">
-              Checkout
-            </Typography>
-            <Stepper activeStep={activeStep} className={classes.stepper}>
-              {steps.map(label => (
-                <Step key={label}>
-                  <StepLabel>{label}</StepLabel>
-                </Step>
-              ))}
-            </Stepper>
-            <React.Fragment>
-              {activeStep === steps.length ? (
-                <React.Fragment>
-                  <Typography variant="h5" gutterBottom>
-                    Thank you for your order.
-                  </Typography>
-                  <Typography variant="subtitle1">
-                    Your order number is #2001539. We have emailed your order confirmation, and will
-                    send you an update when your order has shipped.
-                  </Typography>
-                </React.Fragment>
-              ) : (
-                <React.Fragment>
-                  {getStepContent(activeStep)}
-                  <div className={classes.buttons}>
-                    {activeStep !== 0 && (
-                      <Button onClick={this.handleBack} className={classes.button}>
-                        Back
-                      </Button>
-                    )}
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      onClick={this.handleNext}
-                      className={classes.button}
-                    >
-                      {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
-                    </Button>
-                  </div>
-                </React.Fragment>
-              )}
-            </React.Fragment>
-          </Paper>
-        </main>
-      </React.Fragment>
-    );
-  }
+
 }
+ render() {
+    const { classes } = this.props;
+    return (
+     <React.Fragment>
+     
+        <Grid container spacing={24}>
+          <Grid item xs={6} sm={6}>
+            <TextField
+              required
+              value={this.state.name}
+              onChange={this.handleInputChange}
+              id="Name"
+              name="name"
+              label="Name"
+              
+              fullWidth
+              autoComplete="Name"
+            />
+          </Grid>
 
-Checkout.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
+          <Grid item xs={6} sm={6}>
+          <TextField
+          id="age"
+          name="age"
+          select
+          label="Select"
+          classNames={classes.textField}
+          value={this.state.age}
+          onChange={this.handleInputChange('age')}
+          SelectProps={{
+            MenuProps: {
+                classNames: classes.menu,
+            },
+          }}
+          helperText="Please select age"
+          margin="normal"
+        >
+          {age.map(option => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </TextField>
+          </Grid>
+          <Grid item xs={6}>
+            <TextField
+              required
+              value={this.state.sex}
+              onChange={this.handleInputChange}
+              id="Sex"
+              name="sex"
+              label="Enter Cat's Sex"
+              fullWidth
+              autoComplete="billing address-line1"
+            />
+          </Grid>
+          <Grid item xs={6} sm={6}>
+            <TextField
+                id="size"
+                name="size"
+                select
+                label="Select"
+                classNames={classes.textField}
+                value={this.state.size}
+                onChange={this.handleInputChange('size')}
+                SelectProps={{
+                    MenuProps: {
+                        classNames: classes.menu,
+                    },
+                }}
+                helperText="Please select size"
+                margin="normal"
+        >
+          {size.map(option => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+       
+        </TextField>
+          
+          </Grid>
+    
+            <Grid item xs={6} sm={6}>
+                <TextField
+                    id="primaryBreed"
+                    name="primaryBreed"
+                    select
+                    label="Select"
+                    classNames={classes.textField}
+                    value={this.state.primaryBreed}
+                    onChange={this.handleInputChange(primaryBreed)}
+                    SelectProps={{
+                        MenuProps: {
+                            classNames: classes.menu,
+                        },
+                    }}
+                    helperText="Please select primary breed"
+                    margin="normal">
+                        {primaryBreed.map(option => (
+                            <MenuItem key={option.value} value={option.value}>
+                            {option.label}
+                            </MenuItem>
+                        ))}
+                </TextField>
+            </Grid>
 
-export default withStyles(styles)(Checkout);
+            <Grid item xs={6} sm={6}>
+                <TextField
+                    id="secondaryBreed"
+                    name="secondaryBreed"
+                    select
+                    label="Select"
+                    classNames={classes.textField}
+                    value={this.state.secondaryBreed}
+                    onChange={this.handleInputChange("secondaryBreed")}
+                    SelectProps={{
+                        MenuProps: {
+                            classNames: classes.menu,
+                        },
+                    }}
+                    helperText="Please select secondary breed"
+                    margin="normal">
+                        {secondaryBreed.map(option => (
+                            <MenuItem key={option.value} value={option.value}>
+                            {option.label}
+                            </MenuItem>
+                        ))}
+                </TextField>
+            </Grid>
+
+          <Grid item xs={6}>
+            <TextField
+              value={this.state.description}
+              onChange={this.handleInputChange}
+              id="Description "
+              name="description "
+              label="Write Description  "
+              fullWidth
+              autoComplete="Write Description"
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              required
+              value={this.state.serialNumber}
+              onChange={this.handleInputChange}
+              id="SerialNumber"
+              name="serialNumber"
+              label="SerialNumber"
+              fullWidth
+              autoComplete="SerialNumber"
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField 
+             value={this.state.shelterTableID}
+             onChange={this.handleInputChange}
+             id="ShelterTableID" 
+             name="shelterTableID" 
+             label="ShelterTableID" 
+             fullWidth />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              required
+              value={this.state.petPointID}
+              onChange={this.handleInputChange}
+              id="PetPointID"
+              name="petPointID"
+              label="PetPointID"
+              fullWidth
+              autoComplete="PetPointID"
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              required
+              value={this.state.image}
+              onChange={this.handleInputChange}
+              id="Image"
+              name="image"
+              label="Image"
+              fullWidth
+              autoComplete="Image"
+            />
+        </Grid>
+        <Grid item xs={6} sm={6}>
+                <TextField
+                    id="secondaryBreed"
+                    name="secondaryBreed"
+                    select
+                    label="Select"
+                    classNames={classes.textField}
+                    value={this.state.FIVTested}
+                    onChange={this.handleInputChange("FIVTested")}
+                    SelectProps={{
+                        MenuProps: {
+                            classNames: classes.menu,
+                        },
+                    }}
+                    helperText="FIVTested"
+                    margin="normal">
+                        {FIVTested.map(option => (
+                            <MenuItem key={option.value} value={option.value}>
+                            {option.label}
+                            </MenuItem>
+                        ))}
+                </TextField>
+            </Grid>
+
+             <Grid item xs={6} sm={6}>
+                <TextField
+                    id="FLVTested"
+                    name="FLVTested"
+                    select
+                    label="Select"
+                    classNames={classes.textField}
+                    value={this.state.FLVTested}
+                    onChange={this.handleInputChange("FLVTested")}
+                    SelectProps={{
+                        MenuProps: {
+                            classNames: classes.menu,
+                        },
+                    }}
+                    helperText="FLVTested"
+                    margin="normal">
+                        {FLVTested.map(option => (
+                            <MenuItem key={option.value} value={option.value}>
+                            {option.label}
+                            </MenuItem>
+                        ))}
+                </TextField>
+            </Grid>
+      
+        <Grid item xs={12} sm={6}>
+            <TextField
+              required
+              value={this.state.FVRCPVaccination}
+              onChange={this.handleInputChange}
+              id="FVRCPVaccination Date"
+              name="FVRCPVaccination Date"
+              label="FVRCPVaccination Date"
+              fullWidth
+             
+            />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+            <TextField
+              required
+              value={this.state.rabiesVaccinationDate}
+              onChange={this.handleInputChange}
+              id="RabiesVaccinationDate"
+              name="rabiesVaccinationDate"
+              label="RabiesVaccinationDate"
+              fullWidth
+              autoComplete="RabiesVaccination Date"
+            />
+        </Grid>
+    
+        <Grid item xs={12} sm={6}>
+            <TextField
+              required
+              value={this.state.vetTableID}
+              onChange={this.handleInputChange}
+              id=" VetTableID"
+              name="vetTableID"
+              label="Vet Table ID"
+              fullWidth
+            />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+            <TextField
+              required
+              value={this.state.medicalNote}
+              onChange={this.handleInputChange}
+              id="MedicalNote"
+              name="medicalNote"
+              label="Medical Note"
+              fullWidth
+              autoComplete="Medical Note"
+            />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+            <TextField
+              required
+              value={this.state.behaviourNote}
+              onChange={this.handleInputChange}
+              id="Behaviour Note"
+              name="behaviourNote"
+              label="Behaviour Note"
+              fullWidth
+              autoComplete="Behaviour Note"
+            />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+            <TextField
+              required
+              value={this.state.outCome}
+              onChange={this.handleInputChange}
+              id="Out Come"
+              name="outCome"
+              label="Out Come"
+              fullWidth
+              autoComplete="Out Come"
+            />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+            <TextField
+              required
+              value={this.state.intakeDate}
+              onChange={this.handleInputChange}
+              id="Intake Date"
+              name="intakeDate"
+              label="Intake Date"
+              fullWidth
+              autoComplete="Intake Date"
+            />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+            <TextField
+              required
+              value={this.state.fosterPlacementDate}
+              onChange={this.handleInputChange}
+              id="Foster Placement Date"
+              name="fosterPlacementDate"
+              label="Foster Placement Date"
+              fullWidth
+              autoComplete="Out Come"
+            />
+        </Grid>
+            <Button variant="contained" color="primary" onClick={this.handleFormSubmit}>
+                Submit 
+            </Button>
+        </Grid>
+        </React.Fragment>
+      
+      );
+    }
+}
+// TextFields.propTypes = {
+//     classes: PropTypes.object.isRequired,
+//   };
+
+// export default CatForm;
+export default withStyles(styles)(CatForm);
