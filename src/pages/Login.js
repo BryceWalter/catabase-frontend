@@ -45,11 +45,42 @@ const styles = theme => ({
 });
 
 class Login extends React.Component {
-  
-  render() {
+  constructor(props) {
+    super(props);
 
+    this.state = {
+      email: '',
+      password: ''
+    }
+  }
+
+  handleChange = (e) => {
+    const { name, type, value } = e.target;
+    const val = type === 'number' ? parseFloat(value) : value;
+    this.setState({ [name]: val })
+    console.log(this.state)
+  };
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(this.state)
+    fetch('http://localhost:5000/api/users/login', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(this.state)
+    })
+    .then(response => {
+      console.log(response);
+      this.props.history.push('/dashboard')
+    })
+  }
+
+  render() {
     const { classes } = this.props;
-    
+
     return (
       <main className={classes.main}>
         <CssBaseline />
@@ -59,21 +90,20 @@ class Login extends React.Component {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <form className={classes.form}>
+          <form onSubmit={this.handleSubmit} className={classes.form}>
             <FormControl margin="normal" required fullWidth>
               <InputLabel htmlFor="email">Email Address</InputLabel>
-              <Input id="email" name="email" autoComplete="email" autoFocus />
+              <Input id="email" name="email" autoComplete="email" autoFocus  value={this.state.email} onChange={this.handleChange}/>
             </FormControl>
             <FormControl margin="normal" required fullWidth>
               <InputLabel htmlFor="password">Password</InputLabel>
-              <Input name="password" type="password" id="password" autoComplete="current-password" />
+              <Input name="password" type="password" id="password" autoComplete="current-password" value={this.state.password} onChange={this.handleChange} />
             </FormControl>
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
             <Button
-              onClick={this.login()}
               type="submit"
               fullWidth
               variant="contained"
