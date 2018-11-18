@@ -105,7 +105,7 @@ function Catprofile(props) {
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      Name:
+                      Name: 
                     </Typography>
                     <Typography>
                       Pet Point ID#:

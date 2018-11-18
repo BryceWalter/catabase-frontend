@@ -114,9 +114,6 @@ function Fosterspage(props) {
                     <Typography gutterBottom variant="h5" component="h2">
                       Name:
                     </Typography>
-                    <Typography>
-                      Address:
-                    </Typography>
                   </CardContent>
                   <CardActions>
                     <Button size="small" color="primary">
