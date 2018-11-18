@@ -5,13 +5,13 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Catspage from "./pages/Catspage";
 import Catprofile from "./pages/Catprofile";
-import Ownerspage from "./pages/Ownerspage";
+import Owners from "./pages/Owners";
 import Ownerprofile from "./pages/Ownerprofile";
-// import Fosterspage from "./pages/Fosterspage";
+import Fosters from "./pages/Fosters";
 import Fosterprofile from "./pages/Fosterprofile";
-import Shelterspage from "./pages/Shelterspage";
+import Shelters from "./pages/Shelters";
 import Shelterdetails from "./pages/Shelterdetails";
-import Vetspage from "./pages/Vetspage";
+import Vets from "./pages/Vets";
 // import Vetdetails from "./pages/Vetdetails";
 
 import CatForm from "./pages/CatForm";
@@ -30,16 +30,12 @@ class App extends Component {
           <Route exact path="/cat/:id" component={Catprofile} />
           <Route exact path='/addcat' component={CatForm} />
 
-          <Route exact path="/owners" component={Ownerspage} />
+          <Route exact path="/owners" component={Owners} />
           <Route exact path="/owner" component={Ownerprofile} />
+          <Route exact path="/fosters" component={Fosters} />
+          <Route exact path="/shelters" component={Shelters} />
+          <Route exact path="/vets" component={Vets} />
 
-          <Route exact path="/fosters" component={Fosterspage} />
-          <Route exact path="/foster" component={Fosterprofile} />
-
-          <Route exact path="/shelters" component={Shelterspage} />
-          <Route exact path="/shelter" component={Shelterdetails} />
-          <Route exact path="/vets" component={Vetspage} />
-          {/* <Route exact path="/vet" component={Vetdetails} /> */}
           <Route exact path='/OwnerForm' component={OwnerForm} />
           <Route exact path='/Fosterform' component={Fosterform} />
           <Route exact path="/CatForm" component={CatForm} />

@@ -59,7 +59,7 @@ const rows = [
   { id: 'edit', numeric: false, disablePadding: true, label: 'Edit' },
 ];
 
-class Owners extends React.Component {
+class Vets extends React.Component {
   createSortHandler = property => event => {
     this.props.onRequestSort(event, property);
   };
@@ -107,7 +107,7 @@ class Owners extends React.Component {
   }
 }
 
-Owners.propTypes = {
+Vets.propTypes = {
   numSelected: PropTypes.number.isRequired,
   onRequestSort: PropTypes.func.isRequired,
   onSelectAllClick: PropTypes.func.isRequired,
@@ -123,13 +123,13 @@ const toolbarStyles = theme => ({
   highlight:
     theme.palette.type === 'light'
       ? {
-          color: theme.palette.secondary.main,
-          backgroundColor: lighten(theme.palette.secondary.light, 0.85),
-        }
+        color: theme.palette.secondary.main,
+        backgroundColor: lighten(theme.palette.secondary.light, 0.85),
+      }
       : {
-          color: theme.palette.text.primary,
-          backgroundColor: theme.palette.secondary.dark,
-        },
+        color: theme.palette.text.primary,
+        backgroundColor: theme.palette.secondary.dark,
+      },
   spacer: {
     flex: '1 1 100%',
   },
@@ -156,10 +156,10 @@ let EnhancedTableToolbar = props => {
             {numSelected} selected
           </Typography>
         ) : (
-          <Typography variant="h6" id="tableTitle">
-          
-          </Typography>
-        )}
+            <Typography variant="h6" id="tableTitle">
+
+            </Typography>
+          )}
       </div>
       <div className={classes.spacer} />
       <div className={classes.actions}>
@@ -170,12 +170,12 @@ let EnhancedTableToolbar = props => {
             </IconButton>
           </Tooltip>
         ) : (
-          <Tooltip title="Filter list">
-            <IconButton aria-label="Filter list">
-              <FilterListIcon />
-            </IconButton>
-          </Tooltip>
-        )}
+            <Tooltip title="Filter list">
+              <IconButton aria-label="Filter list">
+                <FilterListIcon />
+              </IconButton>
+            </Tooltip>
+          )}
       </div>
     </Toolbar>
   );
@@ -213,22 +213,6 @@ class EnhancedTable extends React.Component {
       createData('Nahrin Oda', '28 Cat Alley Drive', '905-444-7892', 'nahrinoda@hotmail.com'),
       createData('Sally Smith', '88 Back Alley Street', '905-908-7892', 'sallysmith@hotmail.com'),
       createData('Bryce Walter', '100 Kitty Lane', '905-222-7892', 'brycewalter@hotmail.com'),
-      createData('Nahrin Oda', '28 Cat Alley Drive', '905-444-7892', 'nahrinoda@hotmail.com'),
-      createData('Sally Smith', '88 Back Alley Street', '905-908-7892', 'sallysmith@hotmail.com'),
-      createData('Bryce Walter', '100 Kitty Lane', '905-222-7892', 'brycewalter@hotmail.com'),
-      createData('Nahrin Oda', '28 Cat Alley Drive', '905-444-7892', 'nahrinoda@hotmail.com'),
-      createData('Sally Smith', '88 Back Alley Street', '905-908-7892', 'sallysmith@hotmail.com'),
-      createData('Bryce Walter', '100 Kitty Lane', '905-222-7892', 'brycewalter@hotmail.com'),
-      createData('Nahrin Oda', '28 Cat Alley Drive', '905-444-7892', 'nahrinoda@hotmail.com'),
-      createData('Sally Smith', '88 Back Alley Street', '905-908-7892', 'sallysmith@hotmail.com'),
-      createData('Bryce Walter', '100 Kitty Lane', '905-222-7892', 'brycewalter@hotmail.com'),
-      createData('Nahrin Oda', '28 Cat Alley Drive', '905-444-7892', 'nahrinoda@hotmail.com'),
-      createData('Sally Smith', '88 Back Alley Street', '905-908-7892', 'sallysmith@hotmail.com'),
-      createData('Bryce Walter', '100 Kitty Lane', '905-222-7892', 'brycewalter@hotmail.com'),
-      createData('Nahrin Oda', '28 Cat Alley Drive', '905-444-7892', 'nahrinoda@hotmail.com'),
-      createData('Sally Smith', '88 Back Alley Street', '905-908-7892', 'sallysmith@hotmail.com'),
-      createData('Bryce Walter', '100 Kitty Lane', '905-222-7892', 'brycewalter@hotmail.com'),
-
     ],
     page: 0,
     rowsPerPage: 10,
@@ -294,7 +278,7 @@ class EnhancedTable extends React.Component {
         <EnhancedTableToolbar numSelected={selected.length} />
         <div className={classes.tableWrapper}>
           <Table className={classes.table} aria-labelledby="tableTitle">
-            <Owners
+            <Vets
               numSelected={selected.length}
               order={order}
               orderBy={orderBy}

@@ -4,6 +4,9 @@ import Paper from "@material-ui/core/Paper";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Fosters from "./Fosters";
+import Owners from "./Owners";
+import Shelters from "./Shelters";
+import Vets from "./Vets";
 import Typography from "@material-ui/core/Typography";
 import PropTypes from "prop-types";
 import Catspage from "./Catspage";
@@ -70,7 +73,17 @@ class Dashboard extends React.Component {
           {value === 2 && (
             <TabContainer>
               {" "}
-              <Fosters />
+              <Owners />
+            </TabContainer>
+          )}
+          {value === 3 && (
+            <TabContainer>
+             <Shelters />
+            </TabContainer>
+          )}
+          {value === 4 && (
+            <TabContainer>
+             <Vets />
             </TabContainer>
           )}
         <Footer styles="footerStyle"/>

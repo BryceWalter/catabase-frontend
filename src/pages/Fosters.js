@@ -22,9 +22,9 @@ import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
 
 let counter = 0;
-function createData(name, calories, fat, carbs, protein) {
+function createData(name, address, phoneNumber, email) {
   counter += 1;
-  return { id: counter, name, calories, fat, carbs, protein };
+  return { id: counter, name, address, phoneNumber, email };
 }
 
 function desc(a, b, orderBy) {
@@ -53,13 +53,13 @@ function getSorting(order, orderBy) {
 
 const rows = [
   { id: 'name', numeric: false, disablePadding: true, label: 'Name' },
-  { id: 'address', numeric: true, disablePadding: false, label: 'Address' },
-  { id: 'phone', numeric: true, disablePadding: false, label: 'Phone Number' },
-  { id: 'email', numeric: true, disablePadding: false, label: 'E-mail' },
-  { id: 'edit', numeric: true, disablePadding: false, label: 'Edit' },
+  { id: 'address', numeric: false, disablePadding: true, label: 'Address' },
+  { id: 'phone', numeric: false, disablePadding: true, label: 'Phone Number' },
+  { id: 'email', numeric: false, disablePadding: true, label: 'E-mail' },
+  { id: 'edit', numeric: false, disablePadding: true, label: 'Edit' },
 ];
 
-class Fosters extends React.Component {
+class Fosterspage extends React.Component {
   createSortHandler = property => event => {
     this.props.onRequestSort(event, property);
   };
@@ -107,7 +107,7 @@ class Fosters extends React.Component {
   }
 }
 
-Fosters.propTypes = {
+Fosterspage.propTypes = {
   numSelected: PropTypes.number.isRequired,
   onRequestSort: PropTypes.func.isRequired,
   onSelectAllClick: PropTypes.func.isRequired,
@@ -210,19 +210,22 @@ class EnhancedTable extends React.Component {
     orderBy: 'calories',
     selected: [],
     data: [
-      createData('Cupcake', 305, 3.7, 67, 4.3),
-      createData('Donut', 452, 25.0, 51, 4.9),
-      createData('Eclair', 262, 16.0, 24, 6.0),
-      createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-      createData('Gingerbread', 356, 16.0, 49, 3.9),
-      createData('Honeycomb', 408, 3.2, 87, 6.5),
-      createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-      createData('Jelly Bean', 375, 0.0, 94, 0.0),
-      createData('KitKat', 518, 26.0, 65, 7.0),
-      createData('Lollipop', 392, 0.2, 98, 0.0),
-      createData('Marshmallow', 318, 0, 81, 2.0),
-      createData('Nougat', 360, 19.0, 9, 37.0),
-      createData('Oreo', 437, 18.0, 63, 4.0),
+      createData('Nahrin Oda', '28 Cat Alley Drive', '905-444-7892', 'nahrinoda@hotmail.com'),
+      createData('Sally Smith', '88 Back Alley Street', '905-908-7892', 'sallysmith@hotmail.com'),
+      createData('Bryce Walter', '100 Kitty Lane', '905-222-7892', 'brycewalter@hotmail.com'),
+      createData('Nahrin Oda', '28 Cat Alley Drive', '905-444-7892', 'nahrinoda@hotmail.com'),
+      createData('Sally Smith', '88 Back Alley Street', '905-908-7892', 'sallysmith@hotmail.com'),
+      createData('Bryce Walter', '100 Kitty Lane', '905-222-7892', 'brycewalter@hotmail.com'),
+      createData('Nahrin Oda', '28 Cat Alley Drive', '905-444-7892', 'nahrinoda@hotmail.com'),
+      createData('Sally Smith', '88 Back Alley Street', '905-908-7892', 'sallysmith@hotmail.com'),
+      createData('Bryce Walter', '100 Kitty Lane', '905-222-7892', 'brycewalter@hotmail.com'),
+      createData('Nahrin Oda', '28 Cat Alley Drive', '905-444-7892', 'nahrinoda@hotmail.com'),
+      createData('Sally Smith', '88 Back Alley Street', '905-908-7892', 'sallysmith@hotmail.com'),
+      createData('Bryce Walter', '100 Kitty Lane', '905-222-7892', 'brycewalter@hotmail.com'),
+      createData('Nahrin Oda', '28 Cat Alley Drive', '905-444-7892', 'nahrinoda@hotmail.com'),
+      createData('Sally Smith', '88 Back Alley Street', '905-908-7892', 'sallysmith@hotmail.com'),
+      createData('Bryce Walter', '100 Kitty Lane', '905-222-7892', 'brycewalter@hotmail.com'),
+
     ],
     page: 0,
     rowsPerPage: 10,
@@ -288,7 +291,7 @@ class EnhancedTable extends React.Component {
         <EnhancedTableToolbar numSelected={selected.length} />
         <div className={classes.tableWrapper}>
           <Table className={classes.table} aria-labelledby="tableTitle">
-            <Fosters
+            <Fosterspage
               numSelected={selected.length}
               order={order}
               orderBy={orderBy}
@@ -317,13 +320,19 @@ class EnhancedTable extends React.Component {
                       <TableCell component="th" scope="row" padding="none">
                         {n.name}
                       </TableCell>
-                      <TableCell numeric>{n.calories}</TableCell>
-                      <TableCell numeric>{n.fat}</TableCell>
-                      <TableCell numeric>{n.carbs}</TableCell>
-                      <TableCell numeric>
-                      <Button variant="fab" mini  color="secondary" aria-label="Edit" className={classes.button}>
-                        <Icon>edit_icon</Icon>
-                      </Button>
+                      <TableCell component="th" scope="row" padding="none">
+                        {n.address}
+                      </TableCell>
+                      <TableCell component="th" scope="row" padding="none">
+                        {n.phoneNumber}
+                      </TableCell>
+                      <TableCell component="th" scope="row" padding="none">
+                        {n.email}
+                      </TableCell>
+                      <TableCell component="th" scope="row" padding="none">
+                        <Button variant="fab" mini color="secondary" aria-label="Edit" className={classes.button}>
+                          <Icon>edit_icon</Icon>
+                        </Button>
                       </TableCell>
                     </TableRow>
                   );
