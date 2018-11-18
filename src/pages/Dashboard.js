@@ -41,38 +41,36 @@ class Dashboard extends React.Component {
 
     return (
       <React.Fragment>
-      <Paper>
-        <Tabs
-          value={this.state.value}
-          onChange={this.handleChange}
-          indicatorColor="primary"
-          textColor="primary"
-          centered
-        >
-          <Tab label="Cats" />
-          <Tab label="Fosters" />
-          <Tab label="Owners" />
-          <Tab label="Location" />
-          <Tab label="Volunteers" />
-        </Tabs>
-        {value === 0 && (
-          <TabContainer>
-            <OnwerForm />
-          </TabContainer>
-        )}
-        {value === 1 && (
-          <TabContainer>
-            <Fosters />
-          </TabContainer>
-        )}
-        {value === 2 && (
-          <TabContainer>
-            {" "}
-            <Fosters />
-          </TabContainer>
-        )}
-      </Paper>
-      <Footer styles="footerStyle"/>
+          <Tabs
+            value={this.state.value}
+            onChange={this.handleChange}
+            indicatorColor="primary"
+            textColor="primary"
+            centered
+          >
+            <Tab label="Cats" />
+            <Tab label="Fosters" />
+            <Tab label="Owners" />
+            <Tab label="Location" />
+            <Tab label="Volunteers" />
+          </Tabs>
+          {value === 0 && (
+            <TabContainer>
+              <OnwerForm />
+            </TabContainer>
+          )}
+          {value === 1 && (
+            <TabContainer>
+              <Fosters />
+            </TabContainer>
+          )}
+          {value === 2 && (
+            <TabContainer>
+              {" "}
+              <Fosters />
+            </TabContainer>
+          )}
+        <Footer styles="footerStyle"/>
       </React.Fragment>
     );
   }
