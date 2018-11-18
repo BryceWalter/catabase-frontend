@@ -205,7 +205,7 @@ function Catspage(props) {
                       Name: 
                     </Typography>
                     <Typography>
-                      PetPoint ID#: 
+                      Pet Point ID#: 
                     </Typography>
                   </CardContent>
                   <CardActions>

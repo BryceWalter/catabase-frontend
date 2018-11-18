@@ -46,15 +46,19 @@ const styles = theme => ({
     padding: `${theme.spacing.unit * 8}px 0`,
   },
   card: {
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'column',
+    height: '50%',
+    width: '100%'
+    // display: 'flex',
+    // flexDirection: 'column',
   },
   cardMedia: {
-    paddingTop: '56.25%', // 16:9
+    paddingTop: '25%',
+    width: '50%' // 16:9
   },
+
   cardContent: {
-    flexGrow: 1,
+    // flexGrow: 1,
+    height: '100%'
   },
   footer: {
     backgroundColor: theme.palette.background.paper,
@@ -62,9 +66,8 @@ const styles = theme => ({
   },
 });
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
-function Fosterspage(props) {
+function Ownerprofile(props) {
   const { classes } = props;
 
   return (
@@ -83,52 +86,42 @@ function Fosterspage(props) {
         <div className={classes.heroUnit}>
           <div className={classes.heroContent}>
             <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-              Fosters List
+              Owner Profile
             </Typography>
             <Typography variant="h6" align="center" color="textSecondary" paragraph>
-              This is the inventory of all of our fosters.
+              This is the profile of this owner.
             </Typography>
-            <div className={classes.heroButtons}>
-              <Grid container spacing={16} justify="center">
-                <Grid item>
-                  <Button variant="contained" color="primary">
-                    Add New Foster
-                  </Button>
-                </Grid>
-                <Grid item>
-                  <Button variant="outlined" color="primary">
-                    Search Fosters
-                  </Button>
-                </Grid>
-              </Grid>
-            </div>
+
           </div>
         </div>
         <div className={classNames(classes.layout, classes.cardGrid)}>
           {/* End hero unit */}
           <Grid container spacing={40}>
-            {cards.map(card => (
-              <Grid item key={card} sm={6} md={4} lg={3}>
                 <Card className={classes.card}>
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h2">
                       Name:
                     </Typography>
                     <Typography>
+                      Pet Owned (Pet Point ID#):
+                    </Typography>
+                    <Typography>
                       Address:
+                    </Typography>
+                    <Typography>
+                      Phone Number:
+                    </Typography>
+                    <Typography>
+                      Email:
                     </Typography>
                   </CardContent>
                   <CardActions>
                     <Button size="small" color="primary">
-                      Details
+                      Edit 
                     </Button>
-                    {/* <Button size="small" color="primary">
-                      Edit
-                    </Button> */}
+
                   </CardActions>
                 </Card>
-              </Grid>
-            ))}
           </Grid>
         </div>
       </main>
@@ -146,8 +139,8 @@ function Fosterspage(props) {
   );
 }
 
-Fosterspage.propTypes = {
+Ownerprofile.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Fosterspage);
+export default withStyles(styles)(Ownerprofile);

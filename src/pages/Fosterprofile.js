@@ -101,8 +101,15 @@ function Catprofile(props) {
                       Name:
                     </Typography>
                     <Typography>
-                      PetPoint ID#:
+                      Address:
                     </Typography>
+                    <Typography>
+                      Phone Number:
+                    </Typography>
+                    <Typography>
+                      Email:
+                    </Typography>
+                    
                   </CardContent>
                   <CardActions>
                     <Button size="small" color="primary">
