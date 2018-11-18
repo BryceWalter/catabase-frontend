@@ -6,6 +6,8 @@ import Tab from "@material-ui/core/Tab";
 import Fosters from "./Fosters";
 import Typography from "@material-ui/core/Typography";
 import PropTypes from "prop-types";
+import OnwerForm from "./OnwerForm";
+import Footer from "../components/Footer";
 
 function TabContainer(props) {
   return (
@@ -38,6 +40,7 @@ class Dashboard extends React.Component {
     const { value } = this.state;
 
     return (
+      <React.Fragment>
       <Paper>
         <Tabs
           value={this.state.value}
@@ -54,7 +57,7 @@ class Dashboard extends React.Component {
         </Tabs>
         {value === 0 && (
           <TabContainer>
-            <Fosters />
+            <OnwerForm />
           </TabContainer>
         )}
         {value === 1 && (
@@ -69,6 +72,8 @@ class Dashboard extends React.Component {
           </TabContainer>
         )}
       </Paper>
+      <Footer styles="footerStyle"/>
+      </React.Fragment>
     );
   }
 }
