@@ -83,45 +83,43 @@ class Login extends React.Component {
       <React.Fragment>
         <main className={classes.main}>
           <CssBaseline />
-          <Paper className={classes.paper}>
-            <img
-              className="logo"
-              src={lazycat}
-              width="350"
-              alt="logo"
-            />
-            <Avatar className={classes.avatar}>
-            </Avatar>
-            <Typography component="h1" variant="h5">
-              Sign in
-            </Typography>
-            <form onSubmit={this.handleSubmit} className={classes.form}>
-              <FormControl margin="normal" required fullWidth>
-                <InputLabel htmlFor="email">Email Address</InputLabel>
-                <Input id="email" name="email" autoComplete="email" autoFocus  value={this.state.email} onChange={this.handleChange}/>
-              </FormControl>
-              <FormControl margin="normal" required fullWidth>
-                <InputLabel htmlFor="password">Password</InputLabel>
-                <Input name="password" type="password" id="password" autoComplete="current-password" value={this.state.password} onChange={this.handleChange} />
-              </FormControl>
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
+            <Paper className={classes.paper}>
+              <img
+                className="logo"
+                src={lazycat}
+                width="350"
+                alt="logo"
               />
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                color="primary"
-                className={classes.submit}
-              >
+              <Typography component="h1" variant="h5">
                 Sign in
-              </Button>
-            </form>
-          </Paper>
-        </main>
-      <Footer/>
-      <React.Fragment/>
+              </Typography>
+              <form onSubmit={this.handleSubmit} className={classes.form}>
+                <FormControl margin="normal" required fullWidth>
+                  <InputLabel htmlFor="email">Email Address</InputLabel>
+                  <Input id="email" name="email" autoComplete="email" autoFocus  value={this.state.email} onChange={this.handleChange}/>
+                </FormControl>
+                <FormControl margin="normal" required fullWidth>
+                  <InputLabel htmlFor="password">Password</InputLabel>
+                  <Input name="password" type="password" id="password" autoComplete="current-password" value={this.state.password} onChange={this.handleChange} />
+                </FormControl>
+                <FormControlLabel
+                  control={<Checkbox value="remember" color="primary" />}
+                  label="Remember me"
+                />
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  color="primary"
+                  className={classes.submit}
+                >
+                  Sign in
+                </Button>
+              </form>
+            </Paper>
+          </main>
+        <Footer/>
+      </React.Fragment>
     );
   }
 }
