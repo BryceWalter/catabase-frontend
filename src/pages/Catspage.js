@@ -14,10 +14,6 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import TextField from '@material-ui/core/TextField';
 import Search from '@material-ui/icons/Search';
 
-import _ from "lodash/fp";
-import Fuse from "fuse.js";
-
-
 import { Link } from "react-router-dom";
 import { Input } from '@material-ui/core';
 
@@ -111,7 +107,7 @@ class Catspage extends React.Component {
               <div className={classes.heroButtons}>
                 <Grid container spacing={16} justify="center">
                   <Grid item>
-                    <Link to={'/cat/add'}>
+                    <Link to={'/addcat'}>
                       <Button variant="contained" color="primary">
                       Add New Cat
                       </Button>

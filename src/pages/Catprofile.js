@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
-import CameraIcon from '@material-ui/icons/PhotoCamera';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -137,111 +139,219 @@ class Catprofile extends React.Component {
                       <Typography gutterBottom variant="h5" component="h2">
                         {this.state.cat.name} 
                       </Typography>
-                      <Typography>
-                        Pet Point ID#: {this.state.cat.petpointID}
-                      </Typography>
-                      <Typography>
-                        Status: {this.state.cat.status}
-                      </Typography>
-                      <Typography>
-                       Location: {this.state.cat.location}
-                      </Typography>
-                      <Typography>
-                       Foster Table ID#: {this.state.cat.fosterTableID}
-                      </Typography>
-                      <Typography>
-                       Owner Table ID#: {this.state.cat.ownerTableID}
-                      </Typography>
-                      <Typography>
-                        Age: {this.state.cat.age}
-                      </Typography>
-                      <Typography>
-                        Sex: {this.state.cat.sex}
-                      </Typography>
-                      <Typography>
-                        Description: {this.state.cat.description}
-                      </Typography>
-                      <Typography>
-                        Serial Number: {this.state.cat.serialNumber}
-                      </Typography>
-                      <Typography>
-                        Shelter Table ID#: {this.state.cat.shelterTableID}
-                      </Typography>
-                      <Typography>
-                        Shelter ID#: {this.state.cat.shelterID}
-                      </Typography>
-                      <Typography>
-                        FIV Tested: {this.state.cat.FIVTested}
-                      </Typography>
-                      <Typography>
-                        FLV Tested: {this.state.cat.FLVTested}
-                      </Typography>
-                      <Typography>
-                        FVRCP Vaccination Date: {this.state.cat.FVRCPVaccinationDate}
-                      </Typography>
-                      <Typography>
-                        Rabies Vaccination Date: {this.state.cat.rabiesVaccinationDate}
-                      </Typography>
-                      <Typography>
-                        Vet Table ID#: {this.state.cat.vetTableID}
-                      </Typography>
-                      <Typography>
-                        Medical Notes: {this.state.cat.medicalNotes}
-                      </Typography>
-                      <Typography>
-                       Behaviour Notes: {this.state.cat.behaviourNotes}
-                      </Typography>
-                      <Typography>
-                       Outcome: {this.state.cat.outcome}
-                      </Typography>
-                      <Typography>
-                       Intake Date: {this.state.cat.intakeDate}
-                      </Typography>
-                      <Typography>
-                       Foster Placement Date: {this.state.cat.fosterPlacementDate}
-                      </Typography>
-                      <Typography>
-                       Date of Birth: {this.state.cat.dob}
-                      </Typography>
-                      <Typography>
-                       Size: {this.state.cat.size}
-                      </Typography>
-                      <Typography>
-                       Primary Breed: {this.state.cat.primaryBreed}
-                      </Typography>
-                      <Typography>
-                       Secondary Breed: {this.state.cat.secondaryBreed}
-                      </Typography>
-                      <Typography>
-                       Sterilized: {this.state.cat.sterilized}
-                      </Typography>
-                      <Typography>
-                       Primary Colour: {this.state.cat.primaryColour}
-                      </Typography>
-                      <Typography>
-                       Secondary Colour: {this.state.cat.secondaryColour}
-                      </Typography>
-                      <Typography>
-                       Colour Pattern: {this.state.cat.colourPattern}
-                      </Typography>
-                      <Typography>
-                       Record Owner: {this.state.cat.recordOwner}
-                      </Typography>
-                      <Typography>
-                       Intake Subtype: {this.state.cat.intakeSubtype}
-                      </Typography>
-                      <Typography>
-                       Jurisdiction: {this.state.cat.jurisdiction}
-                      </Typography>
-                      <Typography>
-                       Transfer Reason: {this.state.cat.transferReason}
-                      </Typography>
+                      <Grid container spacing={40}>
+                        <Grid item xs={12} sm={6} >
+                          <List>
+                            <ListItem> 
+                              <ListItemText
+                                primary="Pet Point ID#:"
+                                secondary={this.state.cat.petpointID}
+                              />
+                            </ListItem>
+                            <ListItem>
+                              <ListItemText
+                                primary="Status:"
+                                secondary={this.state.cat.status}
+                              />
+                            </ListItem>
+                            <ListItem> 
+                            <ListItemText
+                                primary="Location:"
+                                secondary={this.state.cat.location}
+                              />
+                            </ListItem>
+                            <ListItem> 
+                            <ListItemText
+                              primary="Foster Table ID#:"
+                                secondary={this.state.cat.fosterTableID}
+                              />
+                            </ListItem>
+                            <ListItem> 
+                            <ListItemText
+                                primary="Owner Table ID#:"
+                                secondary={this.state.cat.ownerTableID}
+                              />
+                            </ListItem>
+                            <ListItem> 
+                              <ListItemText
+                                primary="Age:"
+                                secondary={this.state.cat.age}
+                              />
+                            </ListItem>
+                            <ListItem> 
+                              <ListItemText
+                                primary="Sex:"
+                                secondary={this.state.cat.sex}
+                              />
+                            </ListItem>
+                            <ListItem> 
+                              <ListItemText
+                                primary="Description:"
+                                secondary={this.state.cat.description}
+                              />
+                            </ListItem>
+                            <ListItem> 
+                              <ListItemText
+                                primary="Serial Number:"
+                                secondary={this.state.cat.serialNumber}
+                              />
+                            </ListItem>
+                            <ListItem> 
+                              <ListItemText
+                                primary="Shelter Table ID#:"
+                                secondary={this.state.cat.shelterTableID}
+                              />
+                            </ListItem>
+                            <ListItem> 
+                              <ListItemText
+                                primary="Shelter ID#:"
+                                secondary={this.state.cat.shelterID}
+                              />
+                            </ListItem>
+                            <ListItem> 
+                              <ListItemText
+                                primary="FIV Tested:"
+                                secondary={this.state.cat.FIVTested}
+                              />
+                            </ListItem>
+                            <ListItem> 
+                              <ListItemText
+                                primary="FLV Tested:"
+                                secondary={this.state.cat.FLVTested}
+                              />
+                            </ListItem>
+                            <ListItem> 
+                              <ListItemText
+                                primary="FVRCP Vaccination Date:"
+                                secondary={this.state.cat.FVRCPVaccinationDate}
+                              />
+                            </ListItem>
+                            <ListItem> 
+                              <ListItemText
+                                primary="Rabies Vaccination Date:"
+                                secondary={this.state.cat.rabiesVaccinationDate}
+                              />
+                            </ListItem>
+                            <ListItem> 
+                              <ListItemText
+                                primary="Vet Table ID#:"
+                                secondary={this.state.cat.vetTableID}
+                              />
+                            </ListItem>
+                            <ListItem> 
+                              <ListItemText
+                                primary="Medical Notes:"
+                                secondary={this.state.cat.medicalNotes}
+                              />
+                            </ListItem>
+                          </List>
+                        </Grid>
+                        <Grid item xs={12} sm={6} >
+                          <List>
+                            <ListItem> 
+                            <ListItemText
+                                primary="Behaviour Notes:"
+                                secondary={this.state.cat.behaviourNotes}
+                              />
+                            </ListItem>
+                            <ListItem> 
+                            <ListItemText
+                                primary="Outcome:"
+                                secondary={this.state.cat.outcome}
+                              />
+                            </ListItem>
+                            <ListItem> 
+                            <ListItemText
+                                primary="Intake Date:"
+                                secondary={this.state.cat.intakeDate}
+                              />
+                            </ListItem>
+                            <ListItem> 
+                            <ListItemText
+                                primary="Foster Placement Date:"
+                                secondary={this.state.cat.fosterPlacementDate}
+                              />
+                            </ListItem>
+                            <ListItem> 
+                            <ListItemText
+                                primary="Date of Birth:"
+                                secondary={this.state.cat.dob}
+                              />
+                            </ListItem>
+                            <ListItem> 
+                            <ListItemText
+                                primary="Size:"
+                                secondary={this.state.cat.size}
+                              />
+                            </ListItem>
+                            <ListItem> 
+                            <ListItemText
+                                primary="Primary Breed:"
+                                secondary={this.state.cat.primaryBreed}
+                              />
+                            </ListItem>
+                            <ListItem> 
+                            <ListItemText
+                                primary="Secondary Breed:"
+                                secondary={this.state.cat.secondaryBreed}
+                              />
+                            </ListItem>
+                            <ListItem> 
+                            <ListItemText
+                                primary="Sterilized:"
+                                secondary={this.state.cat.sterilized}
+                              />
+                            </ListItem>
+                            <ListItem> 
+                            <ListItemText
+                                primary="Primary Colour:"
+                                secondary={this.state.cat.primaryColour}
+                              />
+                            </ListItem>
+                            <ListItem> 
+                            <ListItemText
+                                primary="Secondary Colour:"
+                                secondary={this.state.cat.secondaryColour}
+                              />
+                            </ListItem>
+                            <ListItem> 
+                            <ListItemText
+                                primary="Colour Pattern:"
+                                secondary={this.state.cat.colourPattern}
+                              />
+                            </ListItem>
+                            <ListItem> 
+                            <ListItemText
+                                primary="Record Owner:"
+                                secondary={this.state.cat.recordOwner}
+                              />
+                            </ListItem>
+                            <ListItem> 
+                            <ListItemText
+                                primary="Intake Subtype:"
+                                secondary={this.state.cat.intakeSubtype}
+                              />
+                            </ListItem>
+                            <ListItem> 
+                            <ListItemText
+                                primary="Jurisdiction:"
+                                secondary={this.state.cat.jurisdiction}
+                              />
+                            </ListItem>
+                            <ListItem> 
+                            <ListItemText
+                                primary="Transfer Reason:"
+                                secondary={this.state.cat.transferReason}
+                              />
+                            </ListItem>
+                          </List>
+                        </Grid>
+                      </Grid>
                     </CardContent>
                     <CardActions>
                       <Button size="small" color="primary">
                         Edit 
                       </Button>
-  
                     </CardActions>
                   </Card>
             </Grid>
