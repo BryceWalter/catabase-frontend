@@ -204,26 +204,27 @@ class CatForm extends Component {
   };
   handleFormSubmit = event => {
     event.preventDefault();
-    Api.saveCat({
-      name: this.state.name,
-      age: this.state.age,
-      sex: this.state.sex,
-      description: this.state.description,
-      serialNumber: this.state.serialNumber,
-      shelterTableID: this.state.shelterTableID,
-      petPointID: this.state.petPointID,
-      image: this.state.image,
-      FIVTested: this.state.FIVTested,
-      FLVTested: this.state.FFLVTested,
-      FVRCPVaccination: this.state.FVRCPVaccination,
-      rabiesVaccinationDate: this.state.abiesVaccinationDate,
-      vetTableID: this.state.vetTableID,
-      medicalNote: this.state.medicalNote,
-      behaviourNote: this.state.behaviourNote,
-      outCome: this.state.outCome,
-      intakeDate: this.state.intakeDate,
-      fosterPlacementDate: this.state.fosterPlacementDate
-    });
+    //
+    // const newCat = this.state;
+    // console.log(newCat);
+
+    fetch("http://localhost:5000/api/cats/", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(this.state)
+    })
+      .then(response => {
+        console.log(response);
+        return response.json();
+        // this.props.history.push("/dashboard");
+      })
+      .then(data => {
+        console.log(data);
+      });
+    // Api.saveCat(newCat);
   };
   render() {
     const { classes } = this.props;
