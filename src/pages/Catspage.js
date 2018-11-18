@@ -17,7 +17,6 @@ import { withStyles } from '@material-ui/core/styles';
 import { Link } from "react-router-dom";
 
 
-
 const styles = theme => ({
     appBar: {
       position: 'relative',
@@ -133,7 +132,7 @@ const styles = theme => ({
 //                           {cat.name}
 //                         </Link>
 //                       </td>
-//                       <td>{cat.petpointid}</td>
+//                       <td>{cat.petpointID}</td>
 //                       <td>{cat.status}</td>
 //                     </tr>
 //                   ))}
