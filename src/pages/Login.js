@@ -13,6 +13,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import lazycat from '../images/lazycat.gif';
 import Footer from "../components/Footer";
 
+
 const styles = theme => ({
   main: {
     width: 'auto',
@@ -24,7 +25,6 @@ const styles = theme => ({
       marginLeft: 'auto',
       marginRight: 'auto',
     },
- 
   },
   paper: {
     marginTop: theme.spacing.unit * 0.2,
@@ -41,6 +41,8 @@ const styles = theme => ({
     marginTop: theme.spacing.unit * 3,
   }
 });
+
+
 
 class Login extends React.Component {
   constructor(props) {
@@ -83,13 +85,14 @@ class Login extends React.Component {
       <React.Fragment>
         <main className={classes.main}>
           <CssBaseline />
-            <Paper className={classes.paper}>
-              <img
+          <img
                 className="logo"
                 src={lazycat}
-                width="350"
+                width="100%"
                 alt="logo"
               />
+            <Paper className={classes.paper}>
+           
               <Typography component="h1" variant="h5">
                 Sign in
               </Typography>
@@ -118,7 +121,7 @@ class Login extends React.Component {
               </form>
             </Paper>
           </main>
-        <Footer/>
+        <Footer />
       </React.Fragment>
     );
   }

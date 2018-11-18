@@ -65,7 +65,7 @@ const styles = theme => ({
 });
 
 
-function Catprofile(props) {
+function Vetdetails(props) {
   const { classes } = props;
 
   return (
@@ -84,10 +84,10 @@ function Catprofile(props) {
         <div className={classes.heroUnit}>
           <div className={classes.heroContent}>
             <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-              Foster Profile
+              Vet Details
             </Typography>
             <Typography variant="h6" align="center" color="textSecondary" paragraph>
-              This is the profile of this foster.
+              This is the profile of this vet.
             </Typography>
 
           </div>
@@ -105,11 +105,7 @@ function Catprofile(props) {
                     </Typography>
                     <Typography>
                       Phone Number:
-                    </Typography>
-                    <Typography>
-                      Email:
-                    </Typography>
-                    
+                    </Typography>                  
                   </CardContent>
                   <CardActions>
                     <Button size="small" color="primary">
@@ -134,8 +130,8 @@ function Catprofile(props) {
   );
 }
 
-Catprofile.propTypes = {
+Vetdetails.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Catprofile);
+export default withStyles(styles)(Vetdetails);

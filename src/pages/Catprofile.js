@@ -105,13 +105,22 @@ function Catprofile(props) {
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      Name:
+                      Name: 
                     </Typography>
                     <Typography>
                       Pet Point ID#:
                     </Typography>
                     <Typography>
                       Status:
+                    </Typography>
+                    <Typography>
+                     Location:
+                    </Typography>
+                    <Typography>
+                     Foster Table ID#:
+                    </Typography>
+                    <Typography>
+                     Owner Table ID#:
                     </Typography>
                     <Typography>
                       Age:
@@ -130,9 +139,6 @@ function Catprofile(props) {
                     </Typography>
                     <Typography>
                       Shelter ID#:
-                    </Typography>
-                    <Typography>
-                      Age:
                     </Typography>
                     <Typography>
                       FIV Tested:
@@ -163,6 +169,42 @@ function Catprofile(props) {
                     </Typography>
                     <Typography>
                      Foster Placement Date:
+                    </Typography>
+                    <Typography>
+                     Date of Birth:
+                    </Typography>
+                    <Typography>
+                     Size:
+                    </Typography>
+                    <Typography>
+                     Primary Breed:
+                    </Typography>
+                    <Typography>
+                     Secondary Breed:
+                    </Typography>
+                    <Typography>
+                     Sterilized:
+                    </Typography>
+                    <Typography>
+                     Primary Colour:
+                    </Typography>
+                    <Typography>
+                     Secondary Colour:
+                    </Typography>
+                    <Typography>
+                     Color Pattern:
+                    </Typography>
+                    <Typography>
+                     Record Owner:
+                    </Typography>
+                    <Typography>
+                     Intake Subtype:
+                    </Typography>
+                    <Typography>
+                     Jurisdiction:
+                    </Typography>
+                    <Typography>
+                     Transfer Reason:
                     </Typography>
                   </CardContent>
                   <CardActions>

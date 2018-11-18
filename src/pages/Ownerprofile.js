@@ -7,7 +7,7 @@ import CameraIcon from '@material-ui/icons/PhotoCamera';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-// import CardMedia from '@material-ui/core/CardMedia';
+import CardMedia from '@material-ui/core/CardMedia';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -46,14 +46,16 @@ const styles = theme => ({
     padding: `${theme.spacing.unit * 8}px 0`,
   },
   card: {
-    height: '100%',
+    height: '50%',
     width: '100%'
     // display: 'flex',
     // flexDirection: 'column',
   },
   cardMedia: {
-    paddingTop: '50%', // 16:9
+    paddingTop: '25%',
+    width: '50%' // 16:9
   },
+
   cardContent: {
     // flexGrow: 1,
     height: '100%'
@@ -65,7 +67,7 @@ const styles = theme => ({
 });
 
 
-function Catprofile(props) {
+function Ownerprofile(props) {
   const { classes } = props;
 
   return (
@@ -84,10 +86,10 @@ function Catprofile(props) {
         <div className={classes.heroUnit}>
           <div className={classes.heroContent}>
             <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-              Foster Profile
+              Owner Profile
             </Typography>
             <Typography variant="h6" align="center" color="textSecondary" paragraph>
-              This is the profile of this foster.
+              This is the profile of this owner.
             </Typography>
 
           </div>
@@ -101,6 +103,9 @@ function Catprofile(props) {
                       Name:
                     </Typography>
                     <Typography>
+                      Pet Owned (Pet Point ID#):
+                    </Typography>
+                    <Typography>
                       Address:
                     </Typography>
                     <Typography>
@@ -109,12 +114,12 @@ function Catprofile(props) {
                     <Typography>
                       Email:
                     </Typography>
-                    
                   </CardContent>
                   <CardActions>
                     <Button size="small" color="primary">
                       Edit 
                     </Button>
+
                   </CardActions>
                 </Card>
           </Grid>
@@ -134,8 +139,8 @@ function Catprofile(props) {
   );
 }
 
-Catprofile.propTypes = {
+Ownerprofile.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Catprofile);
+export default withStyles(styles)(Ownerprofile);
