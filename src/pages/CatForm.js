@@ -175,6 +175,7 @@ loadCats = () => {
             name:"",
             age:"",
             sex:"",
+            status:"Fostered",
             description:"",
             serialNumber:"",
             shelterTableID:"",
@@ -202,15 +203,19 @@ loadCats = () => {
 //       };
 handleInputChange = name => event => {
     this.setState({
-      [name]: event.target.value,
+      name: event.target.value,
     });
   };
+handleUpdate = event => {
+
+}
 handleFormSubmit = event => {
     event.preventDefault();
     Api.saveCat({
         name:this.state.name,
         age:this.state.age,
         sex:this.state.sex,
+        status: this.state.status,
         description:this.state.description,
         serialNumber:this.state.serialNumber,
         shelterTableID:this.state.shelterTableID,
@@ -230,6 +235,7 @@ handleFormSubmit = event => {
     })
 
 
+
 }
  render() {
     const { classes } = this.props;
@@ -237,10 +243,11 @@ handleFormSubmit = event => {
      <React.Fragment>
      
         <Grid container spacing={24}>
+
           <Grid item xs={6} sm={6}>
             <TextField
               required
-              value={this.state.name}
+            //   value={this.state.name}
               onChange={this.handleInputChange}
               id="Name"
               name="name"
@@ -252,67 +259,96 @@ handleFormSubmit = event => {
           </Grid>
 
           <Grid item xs={6} sm={6}>
-          <TextField
-          id="age"
-          name="age"
-          select
-          label="Select"
-          classNames={classes.textField}
-          value={this.state.age}
-          onChange={this.handleInputChange('age')}
-          SelectProps={{
-            MenuProps: {
-                classNames: classes.menu,
-            },
-          }}
-          helperText="Please select age"
-          margin="normal"
-        >
-          {age.map(option => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
-            </MenuItem>
-          ))}
-        </TextField>
-          </Grid>
-          <Grid item xs={6}>
-            <TextField
-              required
-              value={this.state.sex}
-              onChange={this.handleInputChange}
-              id="Sex"
-              name="sex"
-              label="Enter Cat's Sex"
-              fullWidth
-              autoComplete="billing address-line1"
-            />
-          </Grid>
-          <Grid item xs={6} sm={6}>
-            <TextField
-                id="size"
-                name="size"
+                <TextField
+                id="age"
+                name="age"
                 select
                 label="Select"
                 classNames={classes.textField}
-                value={this.state.size}
-                onChange={this.handleInputChange('size')}
+                value={this.state.sex}
+                onChange={this.handleInputChange('age')}
                 SelectProps={{
                     MenuProps: {
                         classNames: classes.menu,
                     },
                 }}
-                helperText="Please select size"
+                helperText="Please select age"
                 margin="normal"
-        >
-          {size.map(option => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
-            </MenuItem>
-          ))}
-       
-        </TextField>
-          
+                >
+                {age.map(option => (
+                    <MenuItem key={option.value} value={option.value}>
+                    {option.label}
+                    </MenuItem>
+                ))}
+                </TextField>
           </Grid>
+
+          <Grid item xs={6} sm={6}>
+                <TextField
+                id="sex"
+                name="sex"
+                select
+                label="Select"
+                classNames={classes.textField}
+                value={this.state.sex}
+                onChange={this.handleInputChange('sex')}
+                SelectProps={{
+                    MenuProps: {
+                        classNames: classes.menu,
+                    },
+                }}
+                helperText="Please select sex"
+                margin="normal"
+                >
+                {sex.map(option => (
+                    <MenuItem key={option.value} value={option.value}>
+                    {option.label}
+                    </MenuItem>
+                ))}
+                </TextField>
+          </Grid>
+
+           <Grid item xs={6} sm={6}>
+                    <TextField
+                    required
+                    value={this.state.status}
+                    onChange={this.handleInputChange}
+                    id="status"
+                    name="status"
+                    label="status"
+                    
+                    fullWidth
+                    autoComplete="Name"
+                    />
+                </Grid>
+
+                <Grid item xs={6} sm={6}>
+                    <TextField
+                        id="size"
+                        name="size"
+                        select
+                        label="Select"
+                        classNames={classes.textField}
+                        value={this.state.size}
+                        onChange={this.handleInputChange('size')}
+                        SelectProps={{
+                            MenuProps: {
+                                classNames: classes.menu,
+                            },
+                        }}
+                        helperText="Please select size"
+                        margin="normal"
+                >
+                        {size.map(option => (
+                            <MenuItem key={option.value} value={option.value}>
+                            {option.label}
+                            </MenuItem>
+                        ))}
+            
+                    </TextField>        
+          </Grid>
+        
+          
     
             <Grid item xs={6} sm={6}>
                 <TextField
