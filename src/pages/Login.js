@@ -43,6 +43,7 @@ const styles = theme => ({
 });
 
 
+
 class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -120,7 +121,7 @@ class Login extends React.Component {
               </form>
             </Paper>
           </main>
-        <Footer styles="footerStyle"/>
+        <Footer />
       </React.Fragment>
     );
   }

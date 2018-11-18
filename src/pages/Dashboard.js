@@ -9,6 +9,7 @@ import PropTypes from "prop-types";
 import Catspage from "./Catspage";
 import Footer from "../components/Footer";
 
+
 function TabContainer(props) {
   return (
     <Typography component="div" style={{ padding: 8 * 3 }}>
@@ -41,6 +42,7 @@ class Dashboard extends React.Component {
 
     return (
       <React.Fragment>
+        <Paper >
           <Tabs
             value={this.state.value}
             onChange={this.handleChange}
@@ -51,9 +53,10 @@ class Dashboard extends React.Component {
             <Tab label="Cats" />
             <Tab label="Fosters" />
             <Tab label="Owners" />
-            <Tab label="Location" />
-            <Tab label="Volunteers" />
+            <Tab label="Shelters" />
+            <Tab label="Vets" />
           </Tabs>
+          </Paper>
           {value === 0 && (
             <TabContainer>
               <Catspage/>
@@ -61,7 +64,7 @@ class Dashboard extends React.Component {
           )}
           {value === 1 && (
             <TabContainer>
-              <Fosters />
+             <Fosters />
             </TabContainer>
           )}
           {value === 2 && (
