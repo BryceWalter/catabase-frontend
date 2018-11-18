@@ -13,6 +13,7 @@ import Grid from '@material-ui/core/Grid';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
+import ArrowBack from '@material-ui/icons/ArrowBack';
 
 const styles = theme => ({
   appBar: {
@@ -53,7 +54,6 @@ const styles = theme => ({
   },
   cardMedia: {
     paddingTop: '25%',
-    width: '50%' // 16:9
   },
 
   cardContent: {
@@ -67,168 +67,199 @@ const styles = theme => ({
 });
 
 
-function Catprofile(props) {
-  const { classes } = props;
+class Catprofile extends React.Component {
 
-  return (
-    <React.Fragment>
-      <CssBaseline />
-      <AppBar position="static" className={classes.appBar}>
-        <Toolbar>
-          <CameraIcon className={classes.icon} />
-          <Typography variant="h6" color="inherit" noWrap>
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      cat: {}
+    }
+
+    this.goBack = this.goBack.bind(this);
+  }
+
+  goBack(){
+    this.props.history.goBack();
+  }
+
+  componentWillMount() {
+    const { match: { params } } = this.props;
+
+    console.log(params);
+    fetch(`http://localhost:5000/api/cats/${params.id}`)
+    .then(response => {
+      return response.json();
+    })
+    .then(data => {
+      this.setState({cat:data})
+      console.log(this.state);
+    })
+  }
+  
+  render() {
+    const { classes } = this.props;
+
+    return (
+      <React.Fragment>
+        <CssBaseline />
+        <AppBar position="static" className={classes.appBar}>
+          <Toolbar>
+            <ArrowBack className={classes.icon} onClick={this.goBack} />
+            <Typography variant="h6" color="inherit" noWrap>
+              Toronto Cat Rescue
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <main>
+          {/* Hero unit */}
+          <div className={classes.heroUnit}>
+            <div className={classes.heroContent}>
+              <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
+                {this.state.cat.name}
+              </Typography>
+              <Typography variant="h6" align="center" color="textSecondary" paragraph>
+                {this.state.cat.age}
+              </Typography>
+  
+            </div>
+          </div>
+          <div className={classNames(classes.layout, classes.cardGrid)}>
+            {/* End hero unit */}
+            <Grid container spacing={40}>
+                  <Card className={classes.card}>
+                    <CardMedia
+                      className={classes.cardMedia}
+                      image="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22288%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20288%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_164edaf95ee%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A14pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_164edaf95ee%22%3E%3Crect%20width%3D%22288%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2296.32500076293945%22%20y%3D%22118.8%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" // eslint-disable-line max-len
+                      title="Image title"
+                    />
+                    <CardContent className={classes.cardContent}>
+                      <Typography gutterBottom variant="h5" component="h2">
+                        {this.state.cat.name} 
+                      </Typography>
+                      <Typography>
+                        Pet Point ID#: {this.state.cat.petpointID}
+                      </Typography>
+                      <Typography>
+                        Status: {this.state.cat.status}
+                      </Typography>
+                      <Typography>
+                       Location: {this.state.cat.location}
+                      </Typography>
+                      <Typography>
+                       Foster Table ID#: {this.state.cat.fosterTableID}
+                      </Typography>
+                      <Typography>
+                       Owner Table ID#: {this.state.cat.ownerTableID}
+                      </Typography>
+                      <Typography>
+                        Age: {this.state.cat.age}
+                      </Typography>
+                      <Typography>
+                        Sex: {this.state.cat.sex}
+                      </Typography>
+                      <Typography>
+                        Description: {this.state.cat.description}
+                      </Typography>
+                      <Typography>
+                        Serial Number: {this.state.cat.serialNumber}
+                      </Typography>
+                      <Typography>
+                        Shelter Table ID#: {this.state.cat.shelterTableID}
+                      </Typography>
+                      <Typography>
+                        Shelter ID#: {this.state.cat.shelterID}
+                      </Typography>
+                      <Typography>
+                        FIV Tested: {this.state.cat.FIVTested}
+                      </Typography>
+                      <Typography>
+                        FLV Tested: {this.state.cat.FLVTested}
+                      </Typography>
+                      <Typography>
+                        FVRCP Vaccination Date: {this.state.cat.FVRCPVaccinationDate}
+                      </Typography>
+                      <Typography>
+                        Rabies Vaccination Date: {this.state.cat.rabiesVaccinationDate}
+                      </Typography>
+                      <Typography>
+                        Vet Table ID#: {this.state.cat.vetTableID}
+                      </Typography>
+                      <Typography>
+                        Medical Notes: {this.state.cat.medicalNotes}
+                      </Typography>
+                      <Typography>
+                       Behaviour Notes: {this.state.cat.behaviourNotes}
+                      </Typography>
+                      <Typography>
+                       Outcome: {this.state.cat.outcome}
+                      </Typography>
+                      <Typography>
+                       Intake Date: {this.state.cat.intakeDate}
+                      </Typography>
+                      <Typography>
+                       Foster Placement Date: {this.state.cat.fosterPlacementDate}
+                      </Typography>
+                      <Typography>
+                       Date of Birth: {this.state.cat.dob}
+                      </Typography>
+                      <Typography>
+                       Size: {this.state.cat.size}
+                      </Typography>
+                      <Typography>
+                       Primary Breed: {this.state.cat.primaryBreed}
+                      </Typography>
+                      <Typography>
+                       Secondary Breed: {this.state.cat.secondaryBreed}
+                      </Typography>
+                      <Typography>
+                       Sterilized: {this.state.cat.sterilized}
+                      </Typography>
+                      <Typography>
+                       Primary Colour: {this.state.cat.primaryColour}
+                      </Typography>
+                      <Typography>
+                       Secondary Colour: {this.state.cat.secondaryColour}
+                      </Typography>
+                      <Typography>
+                       Colour Pattern: {this.state.cat.colourPattern}
+                      </Typography>
+                      <Typography>
+                       Record Owner: {this.state.cat.recordOwner}
+                      </Typography>
+                      <Typography>
+                       Intake Subtype: {this.state.cat.intakeSubtype}
+                      </Typography>
+                      <Typography>
+                       Jurisdiction: {this.state.cat.jurisdiction}
+                      </Typography>
+                      <Typography>
+                       Transfer Reason: {this.state.cat.transferReason}
+                      </Typography>
+                    </CardContent>
+                    <CardActions>
+                      <Button size="small" color="primary">
+                        Edit 
+                      </Button>
+  
+                    </CardActions>
+                  </Card>
+            </Grid>
+          </div>
+        </main>
+        {/* Footer */}
+        <footer className={classes.footer}>
+          <Typography variant="h6" align="center" gutterBottom>
             Toronto Cat Rescue
           </Typography>
-        </Toolbar>
-      </AppBar>
-      <main>
-        {/* Hero unit */}
-        <div className={classes.heroUnit}>
-          <div className={classes.heroContent}>
-            <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-              Cat Profile
-            </Typography>
-            <Typography variant="h6" align="center" color="textSecondary" paragraph>
-              This is the profile of this cat.
-            </Typography>
-
-          </div>
-        </div>
-        <div className={classNames(classes.layout, classes.cardGrid)}>
-          {/* End hero unit */}
-          <Grid container spacing={40}>
-                <Card className={classes.card}>
-                  <CardMedia
-                    className={classes.cardMedia}
-                    image="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22288%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20288%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_164edaf95ee%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A14pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_164edaf95ee%22%3E%3Crect%20width%3D%22288%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2296.32500076293945%22%20y%3D%22118.8%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" // eslint-disable-line max-len
-                    title="Image title"
-                  />
-                  <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      Name: 
-                    </Typography>
-                    <Typography>
-                      Pet Point ID#:
-                    </Typography>
-                    <Typography>
-                      Status:
-                    </Typography>
-                    <Typography>
-                     Location:
-                    </Typography>
-                    <Typography>
-                     Foster Table ID#:
-                    </Typography>
-                    <Typography>
-                     Owner Table ID#:
-                    </Typography>
-                    <Typography>
-                      Age:
-                    </Typography>
-                    <Typography>
-                      Sex:
-                    </Typography>
-                    <Typography>
-                      Description:
-                    </Typography>
-                    <Typography>
-                      Serial Number:
-                    </Typography>
-                    <Typography>
-                      Shelter Table ID#:
-                    </Typography>
-                    <Typography>
-                      Shelter ID#:
-                    </Typography>
-                    <Typography>
-                      FIV Tested:
-                    </Typography>
-                    <Typography>
-                      FLV Tested:
-                    </Typography>
-                    <Typography>
-                      FVRCP Vaccination Date:
-                    </Typography>
-                    <Typography>
-                      Rabies Vaccination Date:
-                    </Typography>
-                    <Typography>
-                      Vet Table ID#:
-                    </Typography>
-                    <Typography>
-                      Medical Notes:
-                    </Typography>
-                    <Typography>
-                     Behaviour Notes:
-                    </Typography>
-                    <Typography>
-                     Outcome:
-                    </Typography>
-                    <Typography>
-                     Intake Date:
-                    </Typography>
-                    <Typography>
-                     Foster Placement Date:
-                    </Typography>
-                    <Typography>
-                     Date of Birth:
-                    </Typography>
-                    <Typography>
-                     Size:
-                    </Typography>
-                    <Typography>
-                     Primary Breed:
-                    </Typography>
-                    <Typography>
-                     Secondary Breed:
-                    </Typography>
-                    <Typography>
-                     Sterilized:
-                    </Typography>
-                    <Typography>
-                     Primary Colour:
-                    </Typography>
-                    <Typography>
-                     Secondary Colour:
-                    </Typography>
-                    <Typography>
-                     Color Pattern:
-                    </Typography>
-                    <Typography>
-                     Record Owner:
-                    </Typography>
-                    <Typography>
-                     Intake Subtype:
-                    </Typography>
-                    <Typography>
-                     Jurisdiction:
-                    </Typography>
-                    <Typography>
-                     Transfer Reason:
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small" color="primary">
-                      Edit 
-                    </Button>
-
-                  </CardActions>
-                </Card>
-          </Grid>
-        </div>
-      </main>
-      {/* Footer */}
-      <footer className={classes.footer}>
-        <Typography variant="h6" align="center" gutterBottom>
-          Toronto Cat Rescue
-        </Typography>
-        <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-          Copyright 2018 by DreamTeam
-        </Typography>
-      </footer>
-      {/* End footer */}
-    </React.Fragment>
-  );
+          <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
+            Copyright 2018 by DreamTeam
+          </Typography>
+        </footer>
+        {/* End footer */}
+      </React.Fragment>
+    );
+  }
 }
 
 Catprofile.propTypes = {

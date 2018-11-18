@@ -25,17 +25,21 @@ class App extends Component {
         <div className="backGround" >
           <Route exact path="/" component={Login} />
           <Route exact path="/dashboard" component={Dashboard} />
+
           <Route exact path="/cats" component={Catspage} />
-          <Route exact path="/cat" component={Catprofile} />
+          <Route exact path="/cat/:id" component={Catprofile} />
+          <Route exact path='/addcat' component={CatForm} />
+
           <Route exact path="/owners" component={Ownerspage} />
           <Route exact path="/owner" component={Ownerprofile} />
+
           <Route exact path="/fosters" component={Fosterspage} />
           <Route exact path="/foster" component={Fosterprofile} />
+
           <Route exact path="/shelters" component={Shelterspage} />
           {/* <Route exact path="/shelter" component={Shelterdetails} /> */}
           <Route exact path="/vets" component={Vetspage} />
           {/* <Route exact path="/vet" component={Vetdetails} /> */}
-          <Route exact path='/CatForm' component={CatForm} />
           <Route exact path='/OwnerForm' component={OwnerForm} />
           <Route exact path='/Fosterform' component={Fosterform} />
         </div>
