@@ -6,8 +6,9 @@ import Tab from "@material-ui/core/Tab";
 import Fosters from "./Fosters";
 import Typography from "@material-ui/core/Typography";
 import PropTypes from "prop-types";
-import OwnerForm from "./OwnerForm";
+import Catspage from "./Catspage";
 import Footer from "../components/Footer";
+
 
 function TabContainer(props) {
   return (
@@ -41,6 +42,7 @@ class Dashboard extends React.Component {
 
     return (
       <React.Fragment>
+        <Paper >
           <Tabs
             value={this.state.value}
             onChange={this.handleChange}
@@ -51,17 +53,18 @@ class Dashboard extends React.Component {
             <Tab label="Cats" />
             <Tab label="Fosters" />
             <Tab label="Owners" />
-            <Tab label="Location" />
-            <Tab label="Volunteers" />
+            <Tab label="Shelters" />
+            <Tab label="Vets" />
           </Tabs>
+          </Paper>
           {value === 0 && (
             <TabContainer>
-              <OwnerForm />
+              <Catspage/>
             </TabContainer>
           )}
           {value === 1 && (
             <TabContainer>
-              <Fosters />
+             <Fosters />
             </TabContainer>
           )}
           {value === 2 && (

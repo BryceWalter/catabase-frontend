@@ -23,9 +23,7 @@ const styles = theme => ({
     icon: {
       marginRight: theme.spacing.unit * 2,
     },
-    heroUnit: {
-      backgroundColor: theme.palette.background.paper,
-    },
+  
     heroContent: {
       maxWidth: 600,
       margin: '0 auto',
@@ -72,24 +70,11 @@ function Catspage(props) {
   return (
     <React.Fragment>
       <CssBaseline />
-      <AppBar position="static" className={classes.appBar}>
-        <Toolbar>
-          <CameraIcon className={classes.icon} />
-          <Typography variant="h6" color="inherit" noWrap>
-            Toronto Cat Rescue
-          </Typography>
-        </Toolbar>
-      </AppBar>
       <main>
         {/* Hero unit */}
         <div className={classes.heroUnit}>
-          <div className={classes.heroContent}>
-            <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-              Cats List
-            </Typography>
-            <Typography variant="h6" align="center" color="textSecondary" paragraph>
-              This is the inventory of all of our cats.
-            </Typography>
+          
+
             <div className={classes.heroButtons}>
               <Grid container spacing={16} justify="center">
                 <Grid item>
@@ -104,7 +89,7 @@ function Catspage(props) {
                 </Grid>
               </Grid>
             </div>
-          </div>
+          
         </div>
         <div className={classNames(classes.layout, classes.cardGrid)}>
           {/* End hero unit */}
@@ -139,16 +124,7 @@ function Catspage(props) {
           </Grid>
         </div>
       </main>
-      {/* Footer */}
-      <footer className={classes.footer}>
-        <Typography variant="h6" align="center" gutterBottom>
-          Toronto Cat Rescue
-        </Typography>
-        <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-          Copyright 2018 by DreamTeam
-        </Typography>
-      </footer>
-      {/* End footer */}
+     
     </React.Fragment>
   );
 }
