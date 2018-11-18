@@ -38,7 +38,7 @@ class Dashboard extends React.Component {
     const { value } = this.state;
 
     return (
-      <Paper>
+      <div>
         <Tabs
           value={this.state.value}
           onChange={this.handleChange}
@@ -68,7 +68,7 @@ class Dashboard extends React.Component {
             <Fosters />
           </TabContainer>
         )}
-      </Paper>
+      </div>
     );
   }
 }
