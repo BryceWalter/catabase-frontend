@@ -94,9 +94,7 @@ function Catspage(props) {
               <Grid container spacing={16} justify="center">
                 <Grid item>
                   <Button variant="contained" color="primary">
-                  <Link className="btn btn-primary" to={`/cat/new`}>
-                  Add New Cat
-                  </Link>
+                    Add New Cat
                   </Button>
                 </Grid>
                 <Grid item>

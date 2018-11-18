@@ -1,4 +1,3 @@
-
 import React, { Component } from "react";
 import "./App.scss";
 import { BrowserRouter as Router, Route } from "react-router-dom";
@@ -11,9 +10,9 @@ import Ownerprofile from "./pages/Ownerprofile";
 import Fosterspage from "./pages/Fosterspage";
 import Fosterprofile from "./pages/Fosterprofile";
 import Shelterspage from "./pages/Shelterspage";
-// import Shelterdetails from "./pages/Sheltersdetails";
+import Shelterdetails from "./pages/Sheltersdetails";
 import Vetspage from "./pages/Vetspage";
-// import Vetdetails from "./pages/Vetdetails";
+import Vetdetails from "./pages/Vetdetails";
 import CatForm from './pages/CatForm'
 import OwnerForm from './pages/OwnerForm.js'
 import Fosterform from './pages/Fosterform.js'
@@ -32,9 +31,9 @@ class App extends Component {
           <Route exact path="/fosters" component={Fosterspage} />
           <Route exact path="/foster" component={Fosterprofile} />
           <Route exact path="/shelters" component={Shelterspage} />
-          {/* <Route exact path="/shelter" component={Shelterdetails} /> */}
+          <Route exact path="/shelter" component={Shelterdetails} />
           <Route exact path="/vets" component={Vetspage} />
-          {/* <Route exact path="/vet" component={Vetdetails} /> */}
+          <Route exact path="/vet" component={Vetdetails} />
           <Route exact path='/CatForm' component={CatForm} />
           <Route exact path='/OwnerForm' component={OwnerForm} />
           <Route exact path='/Fosterform' component={Fosterform} />
