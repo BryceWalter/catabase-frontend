@@ -196,9 +196,10 @@ class CatForm extends Component {
   //           [name]: value
   //         });
   //       };
-  handleInputChange = name => event => {
+  handleInputChange = event => {
+    const { name, value, type } = event.target;
     this.setState({
-      [name]: event.target.value
+      [name]: value
     });
   };
   handleFormSubmit = event => {
@@ -250,7 +251,7 @@ class CatForm extends Component {
               label="Select"
               classNames={classes.textField}
               value={this.state.age}
-              onChange={this.handleInputChange("age")}
+              onChange={this.handleInputChange}
               SelectProps={{
                 MenuProps: {
                   classNames: classes.menu
@@ -269,14 +270,28 @@ class CatForm extends Component {
           <Grid item xs={6}>
             <TextField
               required
-              //   value={this.state.sex}
+              value={this.state.sex}
               onChange={this.handleInputChange}
               id="Sex"
               name="sex"
-              label="Enter Cat's Sex"
+              label="Select Sex"
               fullWidth
-              autoComplete="billing address-line1"
-            />
+              select
+              SelectProps={{
+                MenuProps: {
+                  classNames: classes.menu
+                }
+              }}
+              helperText="Please select sex"
+              margin="normal"
+              // autoComplete="billing address-line1"
+            >
+              {sex.map(option => (
+                <MenuItem key={option.value} value={option.value}>
+                  {option.label}
+                </MenuItem>
+              ))}
+            </TextField>
           </Grid>
           <Grid item xs={6} sm={6}>
             <TextField
@@ -286,7 +301,7 @@ class CatForm extends Component {
               label="Select"
               classNames={classes.textField}
               value={this.state.size}
-              onChange={this.handleInputChange("size")}
+              onChange={this.handleInputChange}
               SelectProps={{
                 MenuProps: {
                   classNames: classes.menu
@@ -311,7 +326,7 @@ class CatForm extends Component {
               label="Select"
               classNames={classes.textField}
               value={this.state.primaryBreed}
-              onChange={this.handleInputChange(primaryBreed)}
+              onChange={this.handleInputChange}
               SelectProps={{
                 MenuProps: {
                   classNames: classes.menu
@@ -336,7 +351,7 @@ class CatForm extends Component {
               label="Select"
               classNames={classes.textField}
               value={this.state.secondaryBreed}
-              onChange={this.handleInputChange("secondaryBreed")}
+              onChange={this.handleInputChange}
               SelectProps={{
                 MenuProps: {
                   classNames: classes.menu
@@ -372,6 +387,7 @@ class CatForm extends Component {
               id="SerialNumber"
               name="serialNumber"
               label="SerialNumber"
+              type="Number"
               fullWidth
               autoComplete="SerialNumber"
             />
@@ -383,6 +399,7 @@ class CatForm extends Component {
               id="ShelterTableID"
               name="shelterTableID"
               label="ShelterTableID"
+              type="Number"
               fullWidth
             />
           </Grid>
@@ -394,6 +411,7 @@ class CatForm extends Component {
               id="PetPointID"
               name="petPointID"
               label="PetPointID"
+              type="Number"
               fullWidth
               autoComplete="PetPointID"
             />
@@ -412,13 +430,13 @@ class CatForm extends Component {
           </Grid>
           <Grid item xs={6} sm={6}>
             <TextField
-              id="secondaryBreed"
-              name="secondaryBreed"
+              id="FIVTested"
+              name="FIVTested"
               select
               label="Select"
               classNames={classes.textField}
               value={this.state.FIVTested}
-              onChange={this.handleInputChange("FIVTested")}
+              onChange={this.handleInputChange}
               SelectProps={{
                 MenuProps: {
                   classNames: classes.menu
@@ -443,7 +461,7 @@ class CatForm extends Component {
               label="Select"
               classNames={classes.textField}
               value={this.state.FLVTested}
-              onChange={this.handleInputChange("FLVTested")}
+              onChange={this.handleInputChange}
               SelectProps={{
                 MenuProps: {
                   classNames: classes.menu
@@ -496,6 +514,7 @@ class CatForm extends Component {
               id=" VetTableID"
               name="vetTableID"
               label="Vet Table ID"
+              type="Number"
               fullWidth
             />
           </Grid>
@@ -530,7 +549,7 @@ class CatForm extends Component {
               onChange={this.handleInputChange}
               id="Out Come"
               name="outCome"
-              label="Out Come"
+              label="Outcome"
               fullWidth
               autoComplete="Outcome"
             />
