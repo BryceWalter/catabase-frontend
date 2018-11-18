@@ -13,7 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import AddressForm from './AddressForm';
 import PaymentForm from './PaymentForm';
 import Review from './ReviewForm';
-import OwnerForm from './OnwerForm';
+import OwnerForm from './OwnerForm';
 
 const styles = theme => ({
   appBar: {
