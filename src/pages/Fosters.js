@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import AddressForm from './AddressForm';
 import PaymentForm from './PaymentForm';
 import Review from './ReviewForm';
+import OwnerForm from './OnwerForm';
 
 const styles = theme => ({
   appBar: {
@@ -105,9 +106,9 @@ class Fosters extends React.Component {
         </AppBar>
         <main className={classes.layout}>
           <Paper className={classes.paper}>
-            <Typography component="h1" variant="h4" align="center">
+            {/* <Typography component="h1" variant="h4" align="center">
               Fosters
-            </Typography>
+            </Typography> */}
             <Stepper activeStep={activeStep} className={classes.stepper}>
               {steps.map(label => (
                 <Step key={label}>
