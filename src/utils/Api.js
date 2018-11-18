@@ -15,19 +15,11 @@ export default {
   },
   // Saves a cat to the database
   saveCat: function(catData) {
-    return axios.post("/api/CatForm", catData);
-  },
-  saveOwner: function(ownerData){
-    return axios.post("api/OwnerForm", ownerData);
-  },
-  saveFoster: function(fosterData){
-    return axios.post("api/OwnerForm", fosterData);
-  },
-  updateCats: function(id){
-    return axios.put("api/catList" + id);
+    return axios
+      .post("/api/cats/", { catData })
+      .then(res => console.log("success", res))
+      .catch(err => console.log(err));
   }
 
   
 };
-
-
