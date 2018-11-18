@@ -46,15 +46,16 @@ const styles = theme => ({
     padding: `${theme.spacing.unit * 8}px 0`,
   },
   card: {
-    height: '100%',
+    height: '50%',
     width: '100%'
     // display: 'flex',
     // flexDirection: 'column',
   },
   cardMedia: {
-    paddingTop: '50%', // 16:9
+    paddingTop: '25%',
+    width: '50%' // 16:9
   },
-  
+
   cardContent: {
     // flexGrow: 1,
     height: '100%'
@@ -107,7 +108,61 @@ function Catprofile(props) {
                       Name:
                     </Typography>
                     <Typography>
-                      PetPoint ID#:
+                      Pet Point ID#:
+                    </Typography>
+                    <Typography>
+                      Status:
+                    </Typography>
+                    <Typography>
+                      Age:
+                    </Typography>
+                    <Typography>
+                      Sex:
+                    </Typography>
+                    <Typography>
+                      Description:
+                    </Typography>
+                    <Typography>
+                      Serial Number:
+                    </Typography>
+                    <Typography>
+                      Shelter Table ID#:
+                    </Typography>
+                    <Typography>
+                      Shelter ID#:
+                    </Typography>
+                    <Typography>
+                      Age:
+                    </Typography>
+                    <Typography>
+                      FIV Tested:
+                    </Typography>
+                    <Typography>
+                      FLV Tested:
+                    </Typography>
+                    <Typography>
+                      FVRCP Vaccination Date:
+                    </Typography>
+                    <Typography>
+                      Rabies Vaccination Date:
+                    </Typography>
+                    <Typography>
+                      Vet Table ID#:
+                    </Typography>
+                    <Typography>
+                      Medical Notes:
+                    </Typography>
+                    <Typography>
+                     Behaviour Notes:
+                    </Typography>
+                    <Typography>
+                     Outcome:
+                    </Typography>
+                    <Typography>
+                     Intake Date:
+                    </Typography>
+                    <Typography>
+                     Foster Placement Date:
                     </Typography>
                   </CardContent>
                   <CardActions>
