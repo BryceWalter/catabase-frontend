@@ -7,7 +7,7 @@ import Dashboard from "./pages/Dashboard";
 import Catspage from "./pages/Catspage";
 import Catprofile from "./pages/Catprofile";
 import Ownerspage from "./pages/Ownerspage";
-// import Ownerprofile from "./pages/Ownerprofile";
+import Ownerprofile from "./pages/Ownerprofile";
 import Fosterspage from "./pages/Fosterspage";
 import Fosterprofile from "./pages/Fosterprofile";
 import Shelterspage from "./pages/Shelterspage";
@@ -28,7 +28,7 @@ class App extends Component {
           <Route exact path="/cats" component={Catspage} />
           <Route exact path="/cat" component={Catprofile} />
           <Route exact path="/owners" component={Ownerspage} />
-          {/* <Route exact path="/owner" component={Ownerprofile} /> */}
+          <Route exact path="/owner" component={Ownerprofile} />
           <Route exact path="/fosters" component={Fosterspage} />
           <Route exact path="/foster" component={Fosterprofile} />
           <Route exact path="/shelters" component={Shelterspage} />

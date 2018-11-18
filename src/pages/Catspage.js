@@ -16,7 +16,6 @@ import { withStyles } from '@material-ui/core/styles';
 
 import { Link } from "react-router-dom";
 
-
 const styles = theme => ({
     appBar: {
       position: 'relative',
@@ -65,87 +64,7 @@ const styles = theme => ({
     },
   });
 
-
-// class Catspage extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       cats: []
-//     };
-//   }
-
-//   componentDidMount() {
-//     axios.defaults.headers.common["Authorization"] = localStorage.getItem(
-//       "jwtToken"
-//     );
-//     axios
-//       .get("/api/cat")
-//       .then(res => {
-//         this.setState({
-//           cats: res.data
-//         }, this.renderMap());
-//         console.log(this.state.cats);
-//       })
-//       .catch(error => {
-//         if (error.response.status == 401) {
-//           this.props.history.push("/login");
-//         }
-//       });
-//   }
-
-  // logout = () => {
-  //   localStorage.removeItem("jwtToken");
-  //   window.location.reload();
-  // };
-
-//   render() {
-//     return (
-//       <main>
-//           <div className="panel col-lg-3">
-//             <div className="panel-heading">
-//               <h3 className="panel-title">
-//                 Cats List &nbsp;
-//               <Link className="btn btn-primary" to={`/cat/new`}>
-//                   Add New Cat
-//             </Link>
-//               </h3>
-//             </div>
-//             <div className="panel-body">
-//               <table className="table table-stripe">
-//                 <thead>
-//                   <tr>
-//                     <th>Name</th>
-//                     <th>Pet Point ID#</th>
-//                     <th>Status</th>
-//                   </tr>
-//                 </thead>
-//                 <tbody>
-//                   {this.state.cats.map(cat => (
-//                     <tr>
-//                       <td>
-//                         <Link
-//                           to={{
-//                             pathname: `/show/${cat._id}`,
-//                             state: cat
-//                           }}
-//                         >
-//                           {cat.name}
-//                         </Link>
-//                       </td>
-//                       <td>{cat.petpointID}</td>
-//                       <td>{cat.status}</td>
-//                     </tr>
-//                   ))}
-//                 </tbody>
-//               </table>
-//             </div>
-//           </div>
-//       </main>
-//     );
-//   }
-// }
-
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+const cats = [{name: 'Whiskers', age: '99'}, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
 function Catspage(props) {
   const { classes } = props;
@@ -192,8 +111,8 @@ function Catspage(props) {
         <div className={classNames(classes.layout, classes.cardGrid)}>
           {/* End hero unit */}
           <Grid container spacing={40}>
-            {cards.map(card => (
-              <Grid item key={card} sm={6} md={4} lg={3}>
+            {cats.map(cat => (
+              <Grid item key={cat} sm={6} md={4} lg={3}>
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
@@ -202,10 +121,10 @@ function Catspage(props) {
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      Name: 
+                      Name: {cat.name}
                     </Typography>
                     <Typography>
-                      PetPoint ID#: 
+                      Age: {cat.age}
                     </Typography>
                   </CardContent>
                   <CardActions>
