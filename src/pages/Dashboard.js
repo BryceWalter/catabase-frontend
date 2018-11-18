@@ -6,7 +6,7 @@ import Tab from "@material-ui/core/Tab";
 import Fosters from "./Fosters";
 import Typography from "@material-ui/core/Typography";
 import PropTypes from "prop-types";
-import OwnerForm from "./OwnerForm";
+import Catspage from "./Catspage";
 import Footer from "../components/Footer";
 
 function TabContainer(props) {
@@ -56,7 +56,7 @@ class Dashboard extends React.Component {
           </Tabs>
           {value === 0 && (
             <TabContainer>
-              <OwnerForm />
+              <Catspage/>
             </TabContainer>
           )}
           {value === 1 && (

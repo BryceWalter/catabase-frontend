@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 
 var footerStyle = {
   padding: "20px",
-  position: "fixed",
+  // position: "fixed",
   left: "0",
   bottom: "0",
   height: "60px",
