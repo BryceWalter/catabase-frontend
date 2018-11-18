@@ -15,8 +15,9 @@ export default {
   },
   // Saves a cat to the database
   saveCat: function(catData) {
-    return axios.post("/api/CatForm", catData);
+    return axios
+      .post("/api/cats/", { catData })
+      .then(res => console.log("success", res))
+      .catch(err => console.log(err));
   }
 };
-
-
