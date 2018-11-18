@@ -10,12 +10,12 @@ import Ownerprofile from "./pages/Ownerprofile";
 // import Fosterspage from "./pages/Fosterspage";
 import Fosterprofile from "./pages/Fosterprofile";
 import Shelterspage from "./pages/Shelterspage";
-import Shelterdetails from "./pages/Sheltersdetails";
+import Shelterdetails from "./pages/Shelterdetails";
 import Vetspage from "./pages/Vetspage";
 // import Vetdetails from "./pages/Vetdetails";
 
 import CatForm from "./pages/CatForm";
-import OnwerForm from "./pages/OnwerForm.js";
+import OwnerForm from "./pages/OwnerForm.js";
 import Fosterform from "./pages/Fosterform.js";
 
 class App extends Component {
@@ -36,7 +36,7 @@ class App extends Component {
           <Route exact path="/vets" component={Vetspage} />
           {/* <Route exact path="/vet" component={Vetdetails} /> */}
           <Route exact path="/CatForm" component={CatForm} />
-          <Route exact path="/OnwerForm" component={OnwerForm} />
+          <Route exact path="/OnwerForm" component={OwnerForm} />
           <Route exact path="/Fosterform" component={Fosterform} />
         </div>
       </Router>
